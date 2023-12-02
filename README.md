@@ -23,3 +23,15 @@ psql "postgresql://root:$dbpassword@localhost:5432/markedb"
 ## Postgres Database
 
 ### Migrations
+(Tutorial used: https://dev.to/behainguyen/rust-sqlx-cli-database-migration-with-mysql-and-postgresql-42gp)
+1. Install the sqlx cli
+```commandline
+cargo install sqlx-cli --no-default-features -F rustls,postgres
+```    
+([Install rustup](https://doc.rust-lang.org/cargo/getting-started/installation.html) if you don't have cargo)
+2. Create a new migration file in backend/migrations with the following command
+```commandline
+sqlx migrate add -r "Add foo Table"
+```
+3. Add sql to the new files. The up file modifies the database, the down file undoes the modifications.
+4. Your new migrations will now be run automatically by Kubernetes when deployed.
