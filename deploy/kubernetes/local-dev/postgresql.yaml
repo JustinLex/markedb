@@ -1,0 +1,18 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: postgresql
+spec:
+  teamId: "markedb" # Not really used, just boilerplate https://postgres-operator.readthedocs.io/en/latest/user/#create-a-manifest-for-a-new-postgresql-cluster
+  volume:
+    size: 1Gi
+  numberOfInstances: 1
+  users:
+    root:  # superuser
+      - superuser
+      - createdb
+    markedb: []  # markedb db user
+  databases:
+    markedb: markedb  # dbname: owner
+  postgresql:
+    version: "15"
