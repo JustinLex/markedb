@@ -1,5 +1,7 @@
 # 🅱️ (MärkeDB / MarkedB)
 
+A patch database
+
 [Inspired by discussion of a patch database on the OVS Discord](https://discord.com/channels/950003255952433202/1030562619112816731/1180188833745219707)
 
 ## Starting a local development environment
