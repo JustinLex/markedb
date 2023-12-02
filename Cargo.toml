@@ -7,4 +7,6 @@ edition = "2021"
 
 [dependencies]
 actix-web = "4.4.0"
-sqlx = "0.7.3"
+chrono = { version = "0.4.31", features = ["serde"] }
+sqlx = { version = "0.7.3", features = ["runtime-tokio", "tls-rustls", "postgres", "macros", "migrate", "uuid", "chrono"] }
+uuid = { version = "1.6.1", features = ["v7", "fast-rng", "serde"] }
