@@ -14,7 +14,6 @@ DROP TABLE countries,
     patch_tags,
     patch_tags_relations,
     patch_pictures,
-    patch_pictures_relations,
     patch_artists,
     patch_artists_relations;
 

@@ -191,7 +191,6 @@ CREATE TABLE "patch_tags_relations"
     PRIMARY KEY (patch, tag)
 );
 
-
 CREATE TABLE "patch_artists"
 (
     id   uuid NOT NULL PRIMARY KEY,
