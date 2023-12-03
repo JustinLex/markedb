@@ -1,7 +1,7 @@
 allow_k8s_contexts("kind-kind")
 
 # Build main app with live_update enabled
-docker_build('markedb', 'backend',
+docker_build('markedb-backend', 'backend',
     dockerfile="backend/Dockerfile",
     live_update=[
 
@@ -24,7 +24,7 @@ helm_resource('zalando-pgo',
 k8s_yaml(kustomize('deploy/kubernetes/local-dev'))
 
 # Tilt dashboard config
-#k8s_resource('markedb', port_forwards="8080:8080", labels=['Frontend'])
+k8s_resource('backend', port_forwards="8080:8080", labels=['Backend'])
 
 # Automatically port forwarding the DB isn't possible until Zalando adds OwnerReferences
 # https://github.com/zalando/postgres-operator/pull/2199

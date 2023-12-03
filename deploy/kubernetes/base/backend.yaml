@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app.kubernetes.io/name: markedb
+    app.kubernetes.io/component: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: markedb
+      app.kubernetes.io/component: backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: markedb
+        app.kubernetes.io/component: backend
+    spec:
+      containers:
+        - name: backend
+          image: markedb-backend
+          ports:
+            - containerPort: 8080
+          # TODO pass db parameters as envvar
