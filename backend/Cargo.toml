@@ -9,12 +9,9 @@ edition = "2021"
 name = "backend"
 path = "src/main.rs"
 
-[[bin]]
-name = "migrator"
-path = "src/migrations.rs"
-
 [dependencies]
 actix-web = "4.4.0"
 chrono = { version = "0.4.31", features = ["serde"] }
 sqlx = { version = "0.7.3", features = ["runtime-tokio", "tls-rustls", "postgres", "macros", "migrate", "uuid", "chrono"] }
+ts-rs = { version = "7.0.0", features = ["uuid-impl", "chrono-impl", "url-impl"] }
 uuid = { version = "1.6.1", features = ["v7", "fast-rng", "serde"] }

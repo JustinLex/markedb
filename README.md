@@ -4,6 +4,11 @@ A patch database
 
 [Inspired by discussion of a patch database on the OVS Discord](https://discord.com/channels/950003255952433202/1030562619112816731/1180188833745219707)
 
+The code is roughly based off of another Rust/Typescript app, [Lemmy](https://github.com/LemmyNet/lemmy),
+but without an ORM.  
+Another unique feature is the Kubernetes infrastructure that runs the app/database/loadbalancer and makes it portable,
+even able to run as a local development environment.
+
 ## Starting a local development environment
 The local development environment requires either Linux or MacOS. It might be possible to run it in WSL on Windows.
 1. Install Docker, and make sure it is running.
