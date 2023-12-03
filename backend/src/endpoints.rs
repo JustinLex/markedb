@@ -16,6 +16,7 @@ use serde::Serialize;
 // Response types
 #[derive(Serialize, TS)]
 #[ts(export)]
+#[serde(rename_all = "snake_case")]  // https://stackoverflow.com/a/59167858
 enum PatchReason {
     Dryck,
     Event,
