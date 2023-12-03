@@ -8,6 +8,7 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .service(endpoints::index)
             .service(endpoints::hello)
+            .service(endpoints::get_patch)
     })
     .bind(("127.0.0.1", 8080))?
     .run()
