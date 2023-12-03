@@ -175,7 +175,7 @@ CREATE INDEX ON patches (event);
 CREATE TABLE "patch_pictures"
 (
     id uuid NOT NULL PRIMARY KEY,
-    patch uuid NOT NULL references patches ON DELETE CASCADE
+    patch uuid NOT NULL references patches ON DELETE RESTRICT  -- Don't allow orphaned image files
 );
 CREATE INDEX ON patch_pictures (patch);
 
