@@ -1,5 +1,12 @@
 allow_k8s_contexts("kind-kind")
 
+# Build datatype bindings for frontend
+local_resource (name='datatype-bindings',
+                cmd='./build-datatype-bindings.sh',
+                deps = 'backend/',
+                allow_parallel = True,
+                labels = ['Frontend'])
+
 # Full app stack with hot-reloading
 docker_build('markedb-backend', 'backend',
     dockerfile='backend/Dockerfile',
@@ -40,6 +47,12 @@ helm_resource('zalando-pgo',
               namespace="zalando",
               flags=['--create-namespace'],
               labels=['Operators'])
+# TODO install gateway API and istio for routing/proxying
+# routes:
+# /build/ to nginx
+# /api/v1/ to backend
+# /favicon.ico to nginx
+# / to frontend-ssr
 
 # Deploy app
 k8s_yaml(kustomize('deploy/kubernetes/local-dev'))

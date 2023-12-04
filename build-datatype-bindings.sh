@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 
 # Script for building the backend datatype bindings locally.
 # This script is run automatically by Tilt/Github-Actions.
@@ -12,4 +12,4 @@ docker build -f datatype-bindings-builder.Dockerfile . -t markedb-bindings
 docker run --rm \
   --user "$(id -u)":"$(id -g)"\
   -v "$(pwd)/frontend":/frontend markedb-bindings\
-  cp -r /app/bindings /frontend/app/bindings
+  cp -r /app/bindings /frontend/app/
