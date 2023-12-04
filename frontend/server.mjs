@@ -9,7 +9,7 @@ let ssrEntryPoint;
 if(process.env.NODE_ENV !== "production"){
     const remixDev = await import ("@remix-run/dev");
     vite = await remixDev.unstable_createViteServer();
-    ssrEntryPoint = remixDev.unstable_loadViteServerBuild(vite);
+    ssrEntryPoint = () => remixDev.unstable_loadViteServerBuild(vite);
 } else {
     vite = undefined;
     ssrEntryPoint = await import("./build/index.js");
