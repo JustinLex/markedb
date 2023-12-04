@@ -59,9 +59,13 @@ k8s_yaml(kustomize('deploy/kubernetes/local-dev'))
 
 # Tilt dashboard config
 k8s_resource('backend', port_forwards="8080:8080", labels=['Backend'])
-k8s_resource('express-ssr', port_forwards="3000:3000", labels=['Frontend'])
+k8s_resource('express-ssr-dev', port_forwards="3000:3000", labels=['Frontend'])
+k8s_resource('nginx', port_forwards="8081:8080", labels=['Frontend'])
+
+# Prod SSR container, disabled by default, no hot-reloading
+k8s_resource('express-ssr', new_name='express-ssr-prod', port_forwards="3001:3000", auto_init=False, trigger_mode=TRIGGER_MODE_MANUAL, labels=['Frontend'])
 
 # Automatically port forwarding the DB isn't possible until Zalando adds OwnerReferences
 # https://github.com/zalando/postgres-operator/pull/2199
 # use kubectl port-forward postgresql-0 5432 instead
-#k8s_resource( objects=['postgresql:postgresql], new_name='postgresql', port_forwards="5432:5432", labels=['Backend'])
+k8s_resource( objects=['postgresql:postgresql'], new_name='postgresql', resource_deps=['zalando-pgo'], labels=['Backend'])
