@@ -1,6 +1,6 @@
 # markedb Frontend
 
-Frontend typescript app for markedb, uses isomorphic rendering (client-hydrated SSR).
+Frontend Typescript + React app for markedb, uses isomorphic rendering (client-hydrated SSR).
 
 Based off of Remix's Vite+Express preset.
 
@@ -10,7 +10,6 @@ The following environment variables can be used to configure the markedb fronten
 
 | `ENV_VAR`                      | type     | default                          | description                                              |
 |--------------------------------| -------- |----------------------------------|----------------------------------------------------------|
-| `FRONTEND_URL`                 | `string` | `https://localhost:8080/`        | The URL that the frontend node server is hosted at. |
 | `BACKEND_URL`                  | `string` | `https://localhost:8080/api/v1/` | The URL that the backend rust server is hosted at.       |
 
 ## Remix-vite documentation:
@@ -30,14 +29,14 @@ npx create-remix@latest --template remix-run/remix/templates/unstable-vite-expre
 Spin up the Express server as a dev server:
 
 ```shellscript
-npm run dev
+npm start
 ```
 
 Or build your app for production and run it:
 
 ```shellscript
 npm run build
-npm run start
+NODE_ENV=production npm start
 ```
 
 ### Customize

@@ -3,4 +3,6 @@ kind: Kustomization
 
 resources:
   - backend.yaml
+  - express-ssr.yaml
+  - nginx.yaml
   - service.yaml

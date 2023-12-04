@@ -1,12 +1,12 @@
 {
-  "name": "",
+  "name": "markedb",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "vite build && vite build --ssr",
-    "dev": "node ./server.mjs",
-    "start": "cross-env NODE_ENV=production node ./server.mjs",
+    "build-csr": "vite build",
+    "build-ssr": "vite build && vite build --ssr",
+    "start": "node ./server.mjs",
     "typecheck": "tsc"
   },
   "dependencies": {

@@ -1,6 +1,7 @@
 node_modules
 
 /.cache
+/app/bindings
 /build
 /public/build
 .env

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-ssr
+  labels:
+    app.kubernetes.io/name: markedb
+    app.kubernetes.io/component: express-ssr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: markedb
+      app.kubernetes.io/component: express-ssr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: markedb
+        app.kubernetes.io/component: express-ssr
+    spec:
+      containers:
+        - name: backend
+          image: markedb-frontend-remix
+          ports:
+            - containerPort: 3000
+          # TODO pass backend location as envvar

@@ -1,8 +1,29 @@
 allow_k8s_contexts("kind-kind")
 
-# Build main app with live_update enabled
+# Full app stack with hot-reloading
 docker_build('markedb-backend', 'backend',
-    dockerfile="backend/Dockerfile",
+    dockerfile='backend/Dockerfile',
+    live_update=[
+
+    ],
+)
+docker_build('markedb-nginx', 'frontend',
+    dockerfile='frontend/dockerfiles/nginx.Dockerfile',
+    live_update=[
+
+    ],
+)
+docker_build('markedb-frontend-remix-dev', 'frontend',
+    dockerfile='frontend/dockerfiles/remix.Dockerfile',
+    target='development',
+    live_update=[
+
+    ],
+)
+
+# Production express-ssr container for testing production loading
+docker_build('markedb-frontend-remix', 'frontend',
+    dockerfile='frontend/dockerfiles/remix.Dockerfile',
     live_update=[
 
     ],
@@ -25,6 +46,7 @@ k8s_yaml(kustomize('deploy/kubernetes/local-dev'))
 
 # Tilt dashboard config
 k8s_resource('backend', port_forwards="8080:8080", labels=['Backend'])
+k8s_resource('express-ssr', port_forwards="3000:3000", labels=['Frontend'])
 
 # Automatically port forwarding the DB isn't possible until Zalando adds OwnerReferences
 # https://github.com/zalando/postgres-operator/pull/2199
