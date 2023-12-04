@@ -10,21 +10,22 @@ local_resource (name='datatype-bindings',
 # Full app stack with hot-reloading
 docker_build('markedb-backend', 'backend',
     dockerfile='backend/Dockerfile',
-    live_update=[
-
-    ],
+    # Not possible to hot reload a scratch container without local compilation
 )
 docker_build('markedb-nginx', 'frontend',
     dockerfile='frontend/dockerfiles/nginx.Dockerfile',
     live_update=[
-
+        sync('frontend/public', '/var/www'),
+        sync('frontend/', '/tmp'),  # Ignore CSR changes, js modules are served by remix dev server
     ],
 )
 docker_build('markedb-frontend-remix-dev', 'frontend',
     dockerfile='frontend/dockerfiles/remix.Dockerfile',
     target='development',
     live_update=[
-
+        fall_back_on('frontend/composer.json'),
+        fall_back_on('frontend/composer.lock'),
+        sync('frontend/', '/app'),
     ],
 )
 
