@@ -25,28 +25,29 @@ enum PatchReason {
 #[derive(Serialize, TS)]
 #[ts(export)]
 struct PatchResponse {
-    #[ts(type = "Ulid")]
+    #[ts(type = "string")]
     ulid: Ulid,
 
     name: String,
 
     release_date: NaiveDate,
 
-    #[ts(type = "Ulid")]
+    #[ts(type = "string")]
     organizer: Ulid,
 
     reason: PatchReason,
 
-    #[ts(type = "Ulid")]
+    #[ts(optional)]
+    #[ts(type = "string")]
     event: Option<Ulid>,
 
-    #[ts(type = "Ulid")]
+    #[ts(type = "[string]")]
     pictures: Vec<Ulid>,
 
-    #[ts(type = "Ulid")]
+    #[ts(type = "[string]")]
     tags: Vec<Ulid>,
 
-    #[ts(type = "Ulid")]
+    #[ts(type = "[string]")]
     artists: Vec<Ulid>
 }
 
