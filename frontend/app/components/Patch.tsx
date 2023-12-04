@@ -1,5 +1,4 @@
 import {PatchResponse} from "~/bindings/PatchResponse";
-import {toJson} from "tsconfck";
 
 interface PatchProps {
   patch: PatchResponse

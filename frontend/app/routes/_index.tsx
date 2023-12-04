@@ -1,7 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import Patch from "~/components/Patch";
 import {PatchResponse} from "~/bindings/PatchResponse";
-import {PatchReason} from "~/bindings/PatchReason";
 
 export const meta: MetaFunction = () => {
   return [
